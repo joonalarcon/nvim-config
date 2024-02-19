@@ -39,6 +39,8 @@ Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'folke/zen-mode.nvim'
+Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 " Finalizar la lista de plugins
 call plug#end()
@@ -54,6 +56,8 @@ inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 " Configuración de nerdtree
 nnoremap <leader>nt :NERDTreeToggle<CR>
 
+" Configuración de EasyMotion con la tecla líder (espacio) seguida de "s"
+nmap <leader>s <Plug>(easymotion-s2)
 
 
 
