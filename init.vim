@@ -75,10 +75,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 ""Plug 'arcticicestudio/nord-vim'
 
 " Agregar el plugin del tema Gruvbox
-"Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 "Plug 'arcticicestudio/nord-vim'
 "Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
+"Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
 " Fin del archivo de inicio de Plugin
 "Plug 'xero/miasma.nvim'
 "Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
@@ -86,15 +86,17 @@ call plug#end()
 
 " Configuración de plugins
 
-colorscheme gruvbox-baby
-" Vim Airline
-let g:airline#extensions#tabline#enabled = 1
+colorscheme gruvbox
+let g:gruvbox_constrast_dark = "hard"
 
 " NerdTree
 nnoremap <Leader>nt :NERDTreeToggle<CR>
+let g:NERDTreeWinPos = "right"  " Establece la posición de NERDTree a la derecha
+
 
 " EasyMotion
 map <Leader>s <Plug>(easymotion-overwin-line)
+map <Leader>x <Plug>(easymotion-s2)
 
 
 
@@ -121,7 +123,23 @@ let g:coc_global_extensions = [
       \ 'coc-html',
       \ ]
 
+
 " Mapeo para elegir los snippets con la tecla Enter
 inoremap <expr> <CR> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+
+" configuraciones para la ejecucion de archivos python en nvim.
+command! -nargs=0 Python :call RunPythonScript()
+
+function! RunPythonScript()
+    let l:python_script = expand('%')
+    if l:python_script =~# '\.py$'
+        let l:output = systemlist('python3 ' . shellescape(l:python_script))
+        for line in l:output
+            echomsg line
+        endfor
+    else
+        echo "El archivo no es un script de Python."
+    endif
+endfunction
 
