@@ -55,6 +55,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Coc
 
+"startify
+Plug 'mhinz/vim-startify'
+
+" Notificaciones
+Plug 'rcarriga/nvim-notify'
+
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " iconos para nvim
@@ -70,6 +77,10 @@ Plug 'preservim/nerdtree'
 Plug 'easymotion/vim-easymotion'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" vim CMP
+Plug 'hrsh7th/nvim-cmp'
+
 
 " Agregar el plugin del tema Nord
 ""Plug 'arcticicestudio/nord-vim'
@@ -142,4 +153,6 @@ function! RunPythonScript()
         echo "El archivo no es un script de Python."
     endif
 endfunction
+
+
 
