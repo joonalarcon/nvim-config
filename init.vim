@@ -3,19 +3,27 @@
 " Habilita el resaltado de la sintaxis
 syntax enable
 
-" Habilita la numeración de líneas
+" Configurar resaltado de sintaxis para TypeScript y JavaScript
+autocmd FileType typescript,javascript syntax sync fromstart
+
+
+
+
+"enable Habilita la numeración de líneas
 set number
 set relativenumber
 
 " Habilita el autoindentado
 set autoindent
 
-" Ajusta el ancho de tabulación a 4 espacios
-set tabstop=4
-set shiftwidth=4
+" Ajusta el ancho de tabulación a 2 espacios
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set encoding=UTF-8
 set guifont=MesloLGS\ NF:h12
+set encoding=utf-8
+
 
 " Habilita la búsqueda incremental
 set incsearch
@@ -61,19 +69,24 @@ Plug 'preservim/nerdtree'
 " EasyMotion para un movimiento rápido por el texto
 Plug 'easymotion/vim-easymotion'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " Agregar el plugin del tema Nord
 ""Plug 'arcticicestudio/nord-vim'
 
 " Agregar el plugin del tema Gruvbox
-Plug 'morhetz/gruvbox'
-
-
-
-" Fin del archivo de inicio de Plug
+"Plug 'morhetz/gruvbox'
+"Plug 'arcticicestudio/nord-vim'
+"Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
+" Fin del archivo de inicio de Plugin
+"Plug 'xero/miasma.nvim'
+"Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
 call plug#end()
 
 " Configuración de plugins
 
+colorscheme gruvbox-baby
 " Vim Airline
 let g:airline#extensions#tabline#enabled = 1
 
@@ -83,7 +96,7 @@ nnoremap <Leader>nt :NERDTreeToggle<CR>
 " EasyMotion
 map <Leader>s <Plug>(easymotion-overwin-line)
 
-colorscheme gruvbox
+
 
 let g:NERDTreeIndicatorMapCustom = {
       \ "Modified"  : "✹",
@@ -111,13 +124,4 @@ let g:coc_global_extensions = [
 " Mapeo para elegir los snippets con la tecla Enter
 inoremap <expr> <CR> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-
-
-
-" Configurar Powerline con la fuente Nerd Fonts
-let g:Powerline_symbols = 'nerdfonts'
-let g:Powerline_dividerscheme = 'arrow'
-
-" Configurar la fuente de Powerline
-let g:Powerline_symbols_font = 'MesloLGS NF'
 
